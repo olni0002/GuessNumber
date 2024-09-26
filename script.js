@@ -29,6 +29,7 @@ function checkInput() {
     const actualValue = lblNumber.value;
 
     if (guessValue == actualValue) {
+        guess.setAttribute("disabled", true);
         lblMessage.textContent = "Correct!";
         lblNumber.textContent = actualValue;
         document.body.style.backgroundColor = "green";
@@ -52,6 +53,7 @@ function incorrect(msg) {
     lblScore.textContent--;
 
     if (lblScore.textContent === "0") {
+        guess.setAttribute("disabled", true);
         document.body.style.backgroundColor = "red";
         lblMessage.textContent = "Failed!";
         lblNumber.textContent = lblNumber.value;
@@ -69,5 +71,6 @@ function restart() {
     lblNumber.textContent = "?";
     guess.value = "";
     lblScore.textContent = 20;
+    guess.removeAttribute("disabled");
     checkButton.addEventListener("click", checkInput);
 }
